@@ -18,7 +18,14 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     if (empty($_POST["name"])) {
         $name_err = "Name is required";
     }
-} ?>
+}
+
+require "db.php";
+
+$sql = "SELECT * FROM cookbook_recipes WHERE recipe_id = 1";
+$result = mysquli_query($conn, $sql);
+$recipe = mysqli_fetch_assoc($result);
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -30,13 +37,9 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 </head>
 
 <body>
-<!--     <h1> Hello World </h1>
- -->    <?php
-    //echo "this is going to be a cookbook one day";
-    ?>
     <p>Enter Name:
     <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
-        <input type="text" name="name" value = "<?php echo $name ?>" />
+        <input type="text" name="name" value="<?php echo $name ?>" />
         <span class="error"> <?php echo $name_err; ?> </span>
         <button type="submit" name="submit"> submit</button>
     </form>
@@ -44,6 +47,10 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     if ($name = htmlspecialchars($_POST['name'] ?? '', ENT_QUOTES, 'UTF-8')) {
         echo "welcome, $name";
     } ?>
+
+    <h1>
+        <?php echo htmlspecialchars($recipe["title"]); ?>
+    </h1>
     </p>
 </body>
 
