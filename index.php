@@ -20,7 +20,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     }
 }
 
-require "db.php";
+require "config.php";
 
 $sql = "SELECT * FROM cookbook_recipes WHERE recipe_id = 1";
 $result = mysquli_query($conn, $sql);
