@@ -1,4 +1,7 @@
 <?php declare(strict_types=1);
+mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
+
+/* week 02 work */
 function post_value(string $key): string
 {
     return trim($_POST[$key] ?? ' ');
@@ -20,20 +23,14 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     }
 }
 
-/* require "config.php";
-
-$sql = "SELECT * FROM cookbook_recipes WHERE recipe_id = 1";
-$result = mysquli_query($conn, $sql);
-$recipe = mysqli_fetch_assoc($result); */
-
+/* week 03 work */
 require "config.php";
 
 $conn = mysqli_connect($host, $user, $pass, $db);
 
 $result = mysqli_execute_query(
-  $conn,
-  'SELECT * FROM recipes WHERE recipe_id = 1',
- /*  [$_GET['id']] */
+    $conn,
+    'SELECT * FROM recipes',
 );
 $recipe = mysqli_fetch_assoc($result);
 
@@ -49,6 +46,7 @@ $recipe = mysqli_fetch_assoc($result);
 </head>
 
 <body>
+    <!-- week 02 work -->
     <p>Enter Name:
     <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
         <input type="text" name="name" value="<?php echo $name ?>" />
@@ -59,11 +57,21 @@ $recipe = mysqli_fetch_assoc($result);
     if ($name = htmlspecialchars($_POST['name'] ?? '', ENT_QUOTES, 'UTF-8')) {
         echo "welcome, $name";
     } ?>
-
-    <h1>
-        <?php echo htmlspecialchars($recipe["title"]); ?>
-    </h1>
     </p>
+
+    <!-- week 03 work -->
+    <h1>My Recipes</h1>
+    <?php while ($recipe = mysqli_fetch_assoc($result)) { ?>
+
+        <div class="recipe">
+
+            <h2>
+                <?php echo htmlspecialchars($recipe["title"]); ?>
+            </h2>
+
+        </div>
+
+    <?php } ?>
 </body>
 
 </html>
