@@ -61,6 +61,9 @@ $recipe = mysqli_fetch_assoc($result);
 
     <!-- week 03 work -->
     <h1>My Recipes</h1>
+
+    <!-- beginning of AI written code -->
+     
     <?php while ($recipe = mysqli_fetch_assoc($result)) { ?>
 
         <div class="recipe">
@@ -72,6 +75,7 @@ $recipe = mysqli_fetch_assoc($result);
         </div>
 
     <?php } ?>
+    <!-- end of AI written code -->
 </body>
 
 </html>
