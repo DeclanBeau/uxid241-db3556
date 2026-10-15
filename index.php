@@ -13,7 +13,8 @@ $name_err = "";
 $name = "";
 
 
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
+if ($_SERVER["REQUEST_METHOD"] === "POST") {
+    $name = post_value("name");
     if (empty($_POST["name"])) {
         $name_err = "Name is required";
     }
@@ -29,9 +30,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 </head>
 
 <body>
-    <h1> Hello World </h1>
-    <?php
-    echo "this is going to be a cookbook one day";
+<!--     <h1> Hello World </h1>
+ -->    <?php
+    //echo "this is going to be a cookbook one day";
     ?>
     <p>Enter Name:
     <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
