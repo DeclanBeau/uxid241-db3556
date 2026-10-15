@@ -20,11 +20,23 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     }
 }
 
-require "config.php";
+/* require "config.php";
 
 $sql = "SELECT * FROM cookbook_recipes WHERE recipe_id = 1";
 $result = mysquli_query($conn, $sql);
+$recipe = mysqli_fetch_assoc($result); */
+
+require "config.php";
+
+$conn = mysqli_connect($host, $user, $pass, $db);
+
+$result = mysqli_execute_query(
+  $conn,
+  'SELECT * FROM recipes WHERE recipe_id = 1',
+ /*  [$_GET['id']] */
+);
 $recipe = mysqli_fetch_assoc($result);
+
 ?>
 
 <!DOCTYPE html>
