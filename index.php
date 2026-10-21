@@ -7,11 +7,6 @@ function post_value(string $key): string
     return trim($_POST[$key] ?? ' ');
 }
 
-/* function e(string $value): string
-{
-    return htmlspecialchars($value, ENT_QUOTES, 'UTF-8');
-} */
-
 $name_err = "";
 $name = "";
 
@@ -63,7 +58,6 @@ $recipe = mysqli_fetch_assoc($result);
     <h1>My Recipes</h1>
 
     <!-- beginning of AI written code -->
-     
     <?php while ($recipe = mysqli_fetch_assoc($result)) { ?>
 
         <div class="recipe">
