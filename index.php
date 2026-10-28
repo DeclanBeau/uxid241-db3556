@@ -67,7 +67,13 @@ $result = mysqli_execute_query(
             <h2>
                 <?php echo htmlspecialchars($recipe["title"]); ?>
             </h2>
-            
+            <h3>
+                <?php echo htmlspecialchars($recipe["subtitle"]); ?>
+            </h3>
+            <p>
+                <?php echo htmlspecialchars($recipe["description"]); ?> 
+            </p>
+
         </div>
     </div>
 
