@@ -2,36 +2,36 @@
    FONTS
    ========================================= */
 
-@font-face { 
+@font-face {
     font-family: "Rethink Sans";
     src: url("../fonts/RethinkSans.ttf") format("truetype");
     font-weight: 500 800;
     font-style: normal;
-    font-display: swap; 
+    font-display: swap;
 }
 
-@font-face { 
+@font-face {
     font-family: "Rethink Sans";
     src: url("../fonts/RethinkSans-Italic.ttf") format("truetype");
     font-weight: 500;
     font-style: italic;
-    font-display: swap; 
+    font-display: swap;
 }
 
-@font-face { 
+@font-face {
     font-family: "Libre Franklin";
     src: url("../fonts/LibreFranklin.ttf") format("truetype");
     font-weight: 600 900;
     font-style: normal;
-    font-display: swap; 
+    font-display: swap;
 }
 
-@font-face { 
+@font-face {
     font-family: "Libre Franklin";
     src: url("../fonts/LibreFranklin-Italic.ttf") format("truetype");
     font-weight: 600 900;
     font-style: italic;
-    font-display: swap; 
+    font-display: swap;
 }
 
 
@@ -40,12 +40,12 @@
    ========================================= */
 
 :root {
-    --background-color: #ff0000;
-    --header-color: #bbcde5;
-    --accent-color: #1c5d99;
+    --background-color: #fffdf2;
+    --header-color: #E36374;
+    --accent-color: #D72638;
     --color-text: #222222;
-    --color-text-accent: #1c5d99;
-    --color-card: #639fab;
+    --color-text-accent: #D72638;
+    --color-card: #F46036;
 
     --font-main: "Rethink Sans", Arial, sans-serif;
     --font-bold: "Libre Franklin", Arial, sans-serif;
@@ -86,7 +86,7 @@ html {
 body {
     background-color: var(--background-color);
     color: var(--color-text);
-    margin: 0;
+    margin: 0rem;
 
     font-family: var(--font-main);
     font-size: 1rem;
@@ -112,7 +112,7 @@ h3,
 h4 {
     color: var(--color-text-accent);
     font-family: var(--font-bold);
-    line-height: 1.2;
+    line-height: 1.1;
     text-wrap: balance;
 }
 
@@ -131,13 +131,13 @@ h2 {
 h3 {
     font-size: clamp(1.3rem, 2.5vw, 1.6rem);
     font-weight: 700;
-    margin: var(--space-xl) 0 var(--space-sm);
+    margin: var(--space-xs) 0 var(--space-sm);
 }
 
 h4 {
     font-size: 1.15rem;
     font-weight: 700;
-    margin: var(--space-lg) 0 var(--space-xs);
+    margin: var(--space-xs) 0 var(--space-lg);
 }
 
 p {
@@ -204,7 +204,7 @@ header h1 {
    NAVIGATION
    ========================================= */
 
-nav {
+/* nav {
     margin-top: var(--space-md);
 }
 
@@ -262,7 +262,7 @@ nav label {
 
 .collapsable-menu ul {
     display: none;
-}
+} */
 
 
 /* =========================================
@@ -387,6 +387,11 @@ main ul:not(nav ul) li::before {
         box-shadow var(--transition);
 }
 
+.card-content{
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
 .card:hover {
     transform: translateY(-4px);
     box-shadow: 0 12px 30px rgb(34 51 59 / 15%);
@@ -408,10 +413,22 @@ main ul:not(nav ul) li::before {
     color: var(--background-color);
 }
 
-.card h2 {
+.card h1,
+h2,
+h3,
+h4 {
     color: var(--background-color);
 }
 
+.cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-lg);
+
+    width: 100%;
+    max-width: 75rem;
+    margin: 0 auto;
+}
 
 /* =========================================
    PROJECT IMAGES
@@ -439,19 +456,8 @@ main ul:not(nav ul) li::before {
 /* =========================================
    BUTTONS
    ========================================= */
-
-.text-button-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-
-    margin-top: var(--space-md);
-}
-
 .button {
-    display: inline-flex;
-    justify-content: center;
-    align-items: center;
+    display: inline-block;
 
     min-width: 8rem;
     min-height: 3rem;
@@ -462,12 +468,15 @@ main ul:not(nav ul) li::before {
     border: 0;
     border-radius: var(--radius-md);
 
-    margin: var(--space-lg) auto;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: var(--space-lg);
     padding: var(--space-sm) var(--space-lg);
 
     font-family: var(--font-main);
     font-size: 1rem;
     font-weight: 700;
+    text-decoration: none;
 
     cursor: pointer;
 
@@ -485,12 +494,10 @@ main ul:not(nav ul) li::before {
     transform: translateY(0);
 }
 
-.button a {
-    color: inherit;
-    margin: 0;
-    text-decoration: none;
+.button-container {
+    margin-top: auto;
+    text-align: center;
 }
-
 
 /* =========================================
    FOOTER
@@ -501,8 +508,7 @@ footer {
     background-color: var(--header-color);
 
     padding:
-        var(--space-xl)
-        max(var(--space-lg), calc((100% - var(--content-width)) / 2));
+        var(--space-xl) max(var(--space-lg), calc((100% - var(--content-width)) / 2));
 }
 
 footer h4 {
@@ -532,19 +538,9 @@ footer h4 {
    ========================================= */
 
 @media (max-width: 1000px) {
-
-    .main-grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
+    .cards {
+        grid-template-columns: repeat(2, 1fr);
     }
-
-    .work-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .main-work-text {
-        width: 100%;
-    }
-
 }
 
 
@@ -552,7 +548,7 @@ footer h4 {
    MOBILE NAVIGATION
    ========================================= */
 
-@media (max-width: 650px) {
+/* @media (max-width: 650px) {
 
     header {
         padding: var(--space-md);
@@ -628,12 +624,18 @@ footer h4 {
         gap: var(--space-sm);
     }
 
-}
+} */
 
 
 /* =========================================
-   SMALL MOBILE
+    MOBILE
    ========================================= */
+
+@media (max-width: 500px) {
+    .cards {
+        grid-template-columns: 1fr;
+    }
+}
 
 @media (max-width: 400px) {
 
@@ -648,7 +650,6 @@ footer h4 {
     .button {
         width: 100%;
     }
-
 }
 
 

@@ -17,6 +17,8 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     }
 }
 
+$sql = "SELECT * FROM recipes";
+$result = mysqli_query($conn, $sql);
 
 $conn = mysqli_connect($host, $user, $pass, $db);
 
@@ -35,7 +37,6 @@ $result = mysqli_execute_query(
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home</title>
-    <link rel="stylesheet" href="css/normalize.css">
     <link rel="stylesheet" href="css/styles.css">
 </head>
 
@@ -51,32 +52,38 @@ $result = mysqli_execute_query(
          echo "welcome, $name"; 
      } */ ?> 
     </p> -->
+    <main>
+        <h1>My Recipes</h1>
+        <?php
 
-    <h1>My Recipes</h1>
-    <?php
-    $sql = "SELECT * FROM recipes WHERE recipe_id = 1";
-    $result = mysqli_query($conn, $sql);
-    $recipe = mysqli_fetch_assoc($result);
-    ?>
-    <div class="card">
-        <div class="card-image">
-            <img src="<?php echo htmlspecialchars($recipe["main_image"] ?? ""); ?>"
-                alt="<?php echo htmlspecialchars($recipe["title"] ?? ""); ?> ">
+        ?>
+
+        <div class="cards">
+            <?php while ($recipe = mysqli_fetch_assoc($result)) { ?>
+                <div class="card">
+                    <div class="card-image">
+                        <img src="<?php echo htmlspecialchars($recipe["main_image"] ?? ""); ?>"
+                            alt="<?php echo htmlspecialchars($recipe["title"] ?? ""); ?> ">
+                    </div>
+                    <div class="card-content">
+                        <h2>
+                            <?php echo htmlspecialchars($recipe["title"]); ?>
+                        </h2>
+                        <h4>
+                            <?php echo htmlspecialchars($recipe["subtitle"]); ?>
+                        </h4>
+                        <p>
+                            <?php echo htmlspecialchars($recipe["description"]); ?>
+                        </p>
+                        <div class="button-container">
+                            <a class="button" href="recipe.php?id=<?php echo $recipe["recipe_id"]; ?>"> View Recipe </a>
+                        </div>
+                    </div>
+                </div>
+            <?php } ?>
         </div>
-        <div class="card-content">
-            <h2>
-                <?php echo htmlspecialchars($recipe["title"]); ?>
-            </h2>
-            <h3>
-                <?php echo htmlspecialchars($recipe["subtitle"]); ?>
-            </h3>
-            <p>
-                <?php echo htmlspecialchars($recipe["description"]); ?> 
-            </p>
 
-        </div>
-    </div>
-
+    </main>
 </body>
 
 </html>
