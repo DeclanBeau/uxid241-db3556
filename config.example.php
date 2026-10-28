@@ -5,7 +5,7 @@ $host = "";
 $user = "";
 $pass = "";
 $db = "";
-$port = ;
+$port = 0000;
 
 $conn = mysqli_connect($host, $user, $pass, $db, $port);
 mysqli_set_charset($conn, 'utf8mb4');

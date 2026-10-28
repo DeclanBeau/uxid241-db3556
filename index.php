@@ -27,8 +27,8 @@ $result = mysqli_execute_query(
     $conn,
     'SELECT * FROM recipes',
 );
-$recipe = mysqli_fetch_assoc($result);
-
+/* $recipe = mysqli_fetch_assoc($result);
+ */
 ?>
 
 <!DOCTYPE html>
@@ -44,8 +44,8 @@ $recipe = mysqli_fetch_assoc($result);
     <!-- week 02 work -->
     <p>Enter Name:
     <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
-        <input type="text" name="name" value="<?php echo $name ?>" />
-        <span class="error"> <?php echo $name_err; ?> </span>
+        <input type="text" name="name" value="<?php echo htmlspecialchars($name) ?>" />
+        <span class="error"> <?php echo htmlspecialchars($name_err); ?> </span>
         <button type="submit" name="submit"> submit</button>
     </form>
     <?php

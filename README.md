@@ -17,7 +17,7 @@ Windows:
 - $db = "cookbook_recipes";
 - $port = 3306;
 
-If using Windows, make sure to leave the password blank. After that, put the project files inside your htdocs folder in either MAMP or XAMPP, start running MAMP or XAMPP, and start the server. For Windows users using XAMPP, enter localhost in your URL, and select the project from your directory. For Mac users running MAMP, type localhost:8888 into your URL, and select the project from the directory.
+If using Windows, make sure to leave the password blank. After that, put the project files inside your htdocs folder in either MAMP or XAMPP, start running MAMP or XAMPP, and start the server. For Windows users using XAMPP, enter localhost in your URL, and select the project from your directory. For Mac users running MAMP, type localhost:8888 into your URL, and select the project from the directory. 
 
 ## AI Use
 Any and all AI Usage will be cited within the code in accordance with the course syllabus "AI Policy" section.
