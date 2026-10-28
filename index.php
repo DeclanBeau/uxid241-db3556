@@ -17,17 +17,35 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     }
 }
 
-$sql = "SELECT * FROM recipes";
-$result = mysqli_query($conn, $sql);
+$recipes_per_page = 15;
+
+$page = isset($_GET["page"]) ? (int) $_GET["page"] : 1;
+
+if ($page < 1) {
+    $page = 1;
+}
+
+$offset = ($page - 1) * $recipes_per_page;
+
+
+$count_sql = "SELECT COUNT(*) AS total FROM recipes";
+
+$count_result = mysqli_query($conn, $count_sql);
+
+$count_row = mysqli_fetch_assoc($count_result);
+
+$total_recipes = $count_row["total"];
+
+$total_pages = ceil($total_recipes / $recipes_per_page);
+
 
 $conn = mysqli_connect($host, $user, $pass, $db);
+$sql =
 
-$result = mysqli_execute_query(
-    $conn,
-    'SELECT * FROM recipes',
-);
-/* $recipe = mysqli_fetch_assoc($result);
- */
+    "SELECT * FROM recipes ORDER BY recipe_id LIMIT $recipes_per_page OFFSET $offset
+";
+$result = mysqli_execute_query($conn, $sql);
+
 ?>
 
 <!DOCTYPE html>
@@ -81,6 +99,17 @@ $result = mysqli_execute_query(
                     </div>
                 </div>
             <?php } ?>
+        </div>
+
+        <div class = "pagination">
+            <?php for ($i = 1; $i <= $total_pages; $i++){ ?>
+
+                <a href="index.php?page=<?php echo $i; ?>">
+                    <?php echo $i; ?>
+                </a>
+
+            <?php } ?>
+
         </div>
 
     </main>
