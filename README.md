@@ -24,4 +24,4 @@ Any and all AI Usage will be cited within the code in accordance with the course
 <br>
 Tools used:
 - ChatGPT used to reorganize CSS Stylesheet, and add responsiveness
-- ChatGPT also used for questions regarding php, and debugging
+- ChatGPT also used for questions regarding php, sqli, and debugging

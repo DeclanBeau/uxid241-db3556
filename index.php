@@ -12,7 +12,7 @@ function post_value(string $key): string
 $name_err = "";
 $name = "";
 
-//Search Function
+//Search functionality
 $search = trim($_GET["search"] ?? "");
 
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
@@ -115,12 +115,13 @@ if ($search !== '') {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home</title>
+    <link rel="normalize" href="css/normalize.css">
     <link rel="stylesheet" href="css/styles.css">
 </head>
 
 <body>
     <main>
-        <h1>My Recipes</h1>
+        <h1>Recipes</h1>
         <?php
 
         ?>
@@ -149,9 +150,9 @@ if ($search !== '') {
                         <h4>
                             <?php echo htmlspecialchars($recipe["subtitle"]); ?>
                         </h4>
-                        <p>
+                        <!--                         <p>
                             <?php echo htmlspecialchars($recipe["description"]); ?>
-                        </p>
+                        </p> -->
                         <div class="button-container">
                             <a class="button" href="recipe.php?id=<?php echo (int) $recipe["recipe_id"]; ?>"> View Recipe
                             </a>
@@ -163,9 +164,7 @@ if ($search !== '') {
 
         <div class="pagination">
             <?php for ($i = 1; $i <= $total_pages; $i++) { ?>
-                <a <?php if ($i == $page) { ?>
-                        class="active"
-                    <?php } ?>
+                <a <?php if ($i == $page) { ?> class="active" <?php } ?>
                     href="index.php?page=<?php echo urlencode($search); ?>&page=<?php echo $i; ?>">
                     <?php echo $i; ?>
                 </a>
