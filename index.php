@@ -13,7 +13,7 @@ $name_err = "";
 $name = "";
 
 //Search Function
-$search = trim($_GET["search"]?? "");
+$search = trim($_GET["search"] ?? "");
 
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $name = post_value("name");
@@ -87,7 +87,7 @@ if ($search !== '') {
     mysqli_stmt_bind_param(
         $recipe_stmt,
         "ssii",
-        $search_term, 
+        $search_term,
         $search_term,
         $recipes_per_page,
         $offset
@@ -163,7 +163,10 @@ if ($search !== '') {
 
         <div class="pagination">
             <?php for ($i = 1; $i <= $total_pages; $i++) { ?>
-                <a href="index.php?page=<?php echo urlencode($search); ?>&page=<?php echo $i;?>">
+                <a <?php if ($i == $page) { ?>
+                        class="active"
+                    <?php } ?>
+                    href="index.php?page=<?php echo urlencode($search); ?>&page=<?php echo $i; ?>">
                     <?php echo $i; ?>
                 </a>
 
