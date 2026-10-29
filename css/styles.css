@@ -3,34 +3,18 @@
    ========================================= */
 
 @font-face {
-    font-family: "Libre Franklin";
-    src: url("../fonts/LibreFranklin.ttf") format("truetype");
-    font-weight: 500 800;
+    font-family: "Geologica";
+    src: url("../fonts/Geologica.ttf") format("truetype");
+    font-weight: 300;
     font-style: normal;
     font-display: swap;
 }
 
 @font-face {
-    font-family: "Libre Franklin";
-    src: url("../fonts/LibreFranklin-Italic.ttf") format("truetype");
-    font-weight: 500;
-    font-style: italic;
-    font-display: swap;
-}
-
-@font-face {
-    font-family: "Libre Franklin Bold";
-    src: url("../fonts/LibreFranklin.ttf") format("truetype");
+    font-family: "Outfit";
+    src: url("../fonts/Outfit-VariableFont_wght.ttf") format("truetype");
     font-weight: 600 900;
     font-style: normal;
-    font-display: swap;
-}
-
-@font-face {
-    font-family: "Libre Franklin Bold Italic";
-    src: url("../fonts/LibreFranklin-Italic.ttf") format("truetype");
-    font-weight: 600 900;
-    font-style: italic;
     font-display: swap;
 }
 
@@ -47,8 +31,8 @@
     --color-text-accent: #D72638;
     --color-card: #F46036;
 
-    --font-main: "Libre Franklin", Arial, sans-serif;
-    --font-bold: "Libre Franklin", Arial, sans-serif;
+    --font-main: "Geologica", Arial, sans-serif;
+    --font-bold: "Outfit", Arial, sans-serif;
 
     --content-width: 1200px;
     --text-width: 760px;
@@ -375,24 +359,21 @@ main ul:not(nav ul) li::before {
     font-size: 1.3rem;
     font-family: var(--font-bold);
     color: var(--color-text);
-    margin: 1rem;
-    transition:
-        transform var(--transition),
-        opacity var(--transition);
+    margin: var(--space-lg);
+    
 }
 
 
 .pagination a:hover {
     color: var(--color-text-accent);
-    transform: translateY(-3px);
     opacity: 100%;
     cursor: pointer;
+    transition: color var(--transition);
 }
 
 .pagination a.active {
     color: var(--color-text-accent);
 }
-
 /* =========================================
    FORMS
    ========================================= */
@@ -421,6 +402,7 @@ button {
 
     font-family: var(--font-main);
     font-size: .7rem;
+    font-weight: 600;
     color: var(--background-color);
 
     cursor: pointer;

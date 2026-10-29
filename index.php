@@ -150,7 +150,7 @@ if ($search !== '') {
                         <h4>
                             <?php echo htmlspecialchars($recipe["subtitle"]); ?>
                         </h4>
-                        <!--                         <p>
+                        <!--<p>
                             <?php echo htmlspecialchars($recipe["description"]); ?>
                         </p> -->
                         <div class="button-container">
@@ -164,10 +164,10 @@ if ($search !== '') {
 
         <div class="pagination">
             <?php for ($i = 1; $i <= $total_pages; $i++) { ?>
-                <a <?php if ($i == $page) { ?> class="active" <?php } ?>
-                    href="index.php?page=<?php echo urlencode($search); ?>&page=<?php echo $i; ?>">
-                    <?php echo $i; ?>
-                </a>
+                    <a <?php if ($i == $page) { ?> class="active" <?php } ?>
+                        href="index.php?page=<?php echo urlencode($search); ?>&page=<?php echo $i; ?>">
+                        <?php echo $i; ?>
+                    </a>
 
             <?php } ?>
 
