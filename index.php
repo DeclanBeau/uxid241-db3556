@@ -23,8 +23,8 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 }
 
 
-//Limit recipes to 15 a page
-$recipes_per_page = 15;
+//Limit recipes to 12 a page
+$recipes_per_page = 12;
 
 //Get page number from URL
 $page = isset($_GET["page"]) ? (int) $_GET["page"] : 1;
@@ -143,9 +143,9 @@ if ($search !== '') {
                             alt="<?php echo htmlspecialchars($recipe["title"] ?? ""); ?> ">
                     </div>
                     <div class="card-content">
-                        <h2>
+                        <h3>
                             <?php echo htmlspecialchars($recipe["title"]); ?>
-                        </h2>
+                        </h3>
                         <h4>
                             <?php echo htmlspecialchars($recipe["subtitle"]); ?>
                         </h4>
@@ -163,7 +163,6 @@ if ($search !== '') {
 
         <div class="pagination">
             <?php for ($i = 1; $i <= $total_pages; $i++) { ?>
-
                 <a href="index.php?page=<?php echo urlencode($search); ?>&page=<?php echo $i;?>">
                     <?php echo $i; ?>
                 </a>
