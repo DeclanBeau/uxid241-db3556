@@ -23,4 +23,5 @@ If using Windows, make sure to leave the password blank. After that, put the pro
 Any and all AI Usage will be cited within the code in accordance with the course syllabus "AI Policy" section.
 <br>
 Tools used:
-- ChatGPT
+- ChatGPT used to reorganize CSS Stylesheet, and add responsiveness
+- ChatGPT also used for questions regarding php, and debugging
