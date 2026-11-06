@@ -12,9 +12,6 @@ function post_value(string $key): string
 $name_err = "";
 $name = "";
 
-//Search functionality
-$search = trim($_GET["search"] ?? "");
-
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $name = post_value("name");
     if (empty($_POST["name"])) {
@@ -22,9 +19,13 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     }
 }
 
-
 //Limit recipes to 12 a page
 $recipes_per_page = 12;
+
+
+//trimming searches
+$search = trim($_GET["search"] ?? "");
+
 
 //Get page number from URL
 $page = isset($_GET["page"]) ? (int) $_GET["page"] : 1;
@@ -120,15 +121,33 @@ if ($search !== '') {
 </head>
 
 <body>
+    <header>
+        <h4> To do:</h4>
+        <ul>
+            <li> Filter by category </li>
+            <ul>
+                <li> Checkboxes</li>
+            </ul>
+            <li> Build out recipes page</li>
+            <ul>
+                <li> Ask about connecting steps table via foreign key</li>
+                <li> CSS, 2 Columns, one with main_image and ingredients_image, with description, one with steps and
+                    step images?</li>
+            </ul>
+            <li> Admin Login</li>
+            <li> Add the ability to clear search and reload default page </li>
+        </ul>
+    </header>
     <main>
         <h1>Recipes</h1>
+        <p><a href="login.php"> Login </a></p>
+        <p><a href="logout.php"> Logout</a></p>
         <?php
 
         ?>
         <form method="get" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
             <input type="text" name="search" placeholder="Search recipes"
                 value="<?php echo htmlspecialchars($_GET["search"] ?? ""); ?>">
-
             <button type="submit">
                 Search
             </button>
@@ -164,10 +183,10 @@ if ($search !== '') {
 
         <div class="pagination">
             <?php for ($i = 1; $i <= $total_pages; $i++) { ?>
-                    <a <?php if ($i == $page) { ?> class="active" <?php } ?>
-                        href="index.php?page=<?php echo urlencode($search); ?>&page=<?php echo $i; ?>">
-                        <?php echo $i; ?>
-                    </a>
+                <a <?php if ($i == $page) { ?> class="active" <?php } ?>
+                    href="index.php?page=<?php echo urlencode($search); ?>&page=<?php echo $i; ?>">
+                    <?php echo $i; ?>
+                </a>
 
             <?php } ?>
 

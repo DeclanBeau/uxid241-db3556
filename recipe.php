@@ -25,7 +25,7 @@ $recipe = mysqli_fetch_assoc($result);
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Recipe</title>
+    <title><?php echo htmlspecialchars($recipe["title"]); ?></title>
     <link rel="normalize" href="css/normalize.css">
     <link rel="stylesheet" href="css/styles.css">
 </head>
