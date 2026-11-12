@@ -25,6 +25,7 @@ $recipes_per_page = 12;
 
 //trimming searches
 $search = trim($_GET["search"] ?? "");
+$category = trim($_GET["category"]?? "");
 
 
 //Get page number from URL
@@ -121,7 +122,7 @@ if ($search !== '') {
 </head>
 
 <body>
-    <header>
+    <!-- <header>
         <h4> To do:</h4>
         <ul>
             <li> Filter by category </li>
@@ -137,7 +138,7 @@ if ($search !== '') {
             <li> Admin Login</li>
             <li> Add the ability to clear search and reload default page </li>
         </ul>
-    </header>
+    </header> -->
     <main>
         <h1>Recipes</h1>
         <p><a href="login.php"> Login </a></p>
